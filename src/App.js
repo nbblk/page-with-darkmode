@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+
+import Header from './Header';
+import Sidebar from './Sidebar';
+import Container from './Container';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class App extends Component {
+  state = {
+    light: true
+  }
+
+  switchHandler() {
+    this.setState({light : !this.state.light});
+  }
+
+  render() {
+    return <div data-testid="app" className={this.state.light ? "App" : "dark"}>
+      <Header switch={() => this.switchHandler()} label={this.state.light ? "off" : "on"}/>
+      <div className="wrapper">
+        <Sidebar/>
+        <Container />
+      </div>
     </div>
-  );
+  }
 }
 
 export default App;

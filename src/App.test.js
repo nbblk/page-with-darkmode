@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from './App';
 
-test('renders learn react link', () => {
+test('change button text after clicking', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  userEvent.click(screen.getByRole('button'), 'light off');
+  expect(screen.getByRole('button')).toHaveTextContent('light on');
+  expect(screen.getByTestId(/app/)).toHaveClass('dark');
 });

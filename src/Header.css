@@ -1,0 +1,11 @@
+header {
+    width: 100vw;
+    height: 50px;
+    position: relative;
+    border: 1px solid black;
+}
+
+button {
+    position: absolute;
+    right: 10px;
+}
